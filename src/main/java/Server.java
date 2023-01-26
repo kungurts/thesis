@@ -23,7 +23,6 @@ public class Server {
     public void start() throws IOException {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        StringBuilder stringBuilder = new StringBuilder();
 
         System.out.println("Starting server at " + port + "...");
         try (ServerSocket serverSocket = new ServerSocket(port);) {
@@ -35,6 +34,7 @@ public class Server {
                 ) {
                     String word = in.readLine();
                     List<PageEntry> answer = engine.search(word);
+                    System.out.println(answer);
 
                     List<String> answerJson =
                             answer.stream()
